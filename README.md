@@ -4,13 +4,6 @@ Nullstone Block standing up a worker as an AWS Fargate container service using E
 
 ## Inputs
 
-- `owner_id: string` - Stack Owner ID
-- `stack_name: string` - Stack Name
-- `block_name: string` - Block Name (this represents the service name)
-- `parent_blocks: object({ cluster: string })` - Parent Blocks (cluster = fargate cluster block name)
-- `env: string` - Environment Name
-- `backend_conn_str: string` - Connection string for postgres backend
-
 - `service_count: number`
   - Default: `1`
 - `service_cpu: number`
@@ -32,7 +25,3 @@ Nullstone Block standing up a worker as an AWS Fargate container service using E
   - Name of AWS ECS Service
 - `task_family`
   - Name of single AWS ECS Task 
-- `cluster_block`
-  - Name of Cluster Block
-- `network_block`
-  - Name of Network Block
