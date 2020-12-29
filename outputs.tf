@@ -25,11 +25,3 @@ output "task_family" {
 output "service_security_group_id" {
   value = aws_security_group.this.id
 }
-
-output "cluster_block" {
-  value = var.parent_blocks.cluster
-}
-
-output "network_block" {
-  value = local.network_block
-}
