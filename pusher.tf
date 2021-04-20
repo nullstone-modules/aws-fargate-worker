@@ -20,7 +20,6 @@ data "aws_iam_policy_document" "image_pusher" {
     effect = "Allow"
 
     actions = [
-      "ecr:GetAuthorizationToken",
       "ecr:GetDownloadUrlForLayer",
       "ecr:BatchGetImage",
       "ecr:BatchCheckLayerAvailability",
@@ -31,5 +30,12 @@ data "aws_iam_policy_document" "image_pusher" {
     ]
 
     resources = aws_ecr_repository.this.*.arn
+  }
+
+  statement {
+    sid       = "AllowAuthorization"
+    effect    = "Allow"
+    actions   = ["ecr:GetAuthorizationToken"]
+    resources = ["*"]
   }
 }
