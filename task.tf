@@ -3,7 +3,7 @@ locals {
 
   container_definition = {
     name  = data.ns_workspace.this.block
-    image = "${aws_ecr_repository.this.repository_url}:${var.service_image_tag}"
+    image = "${local.service_image}:${local.app_version}"
     portMappings = [
       {
         protocol      = "tcp"
