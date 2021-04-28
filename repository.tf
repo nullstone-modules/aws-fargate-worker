@@ -9,4 +9,6 @@ locals {
 resource "aws_ecr_repository" "this" {
   name = "${data.ns_workspace.this.stack}/${data.ns_workspace.this.env}-${data.ns_workspace.this.block}"
   tags = data.ns_workspace.this.tags
+
+  count = var.service_image == "" ? 1 : 0
 }
