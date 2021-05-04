@@ -1,8 +1,7 @@
 resource "aws_security_group" "this" {
-  name   = data.ns_workspace.this.slashed_name
+  name   = local.resource_name
   vpc_id = data.ns_connection.network.outputs.vpc_id
-
-  tags = data.ns_workspace.this.tags
+  tags   = data.ns_workspace.this.tags
 }
 
 resource "aws_security_group_rule" "this-https-to-world" {
