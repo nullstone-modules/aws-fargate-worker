@@ -1,10 +1,10 @@
 resource "aws_ecs_service" "this" {
-  name           = data.ns_workspace.this.block
-  cluster        = data.aws_ecs_cluster.cluster.arn
-  desired_count  = var.service_count
+  name            = data.ns_workspace.this.block_name
+  cluster         = data.aws_ecs_cluster.cluster.arn
+  desired_count   = var.service_count
   task_definition = aws_ecs_task_definition.this.arn
-  launch_type    = "FARGATE"
-  tags           = data.ns_workspace.this.tags
+  launch_type     = "FARGATE"
+  tags            = data.ns_workspace.this.tags
 
   network_configuration {
     subnets          = data.ns_connection.network.outputs.private_subnet_ids
