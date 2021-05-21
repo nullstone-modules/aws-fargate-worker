@@ -44,15 +44,3 @@ These are typically used to configure a service per environment.
 It is dangerous to put sensitive information in this variable because they are not protected and could be unintentionally exposed.
 EOF
 }
-
-resource "random_string" "resource_suffix" {
-  length  = 5
-  lower   = true
-  upper   = false
-  number  = false
-  special = false
-}
-
-locals {
-  resource_name = "${data.ns_workspace.this.block_ref}-${random_string.resource_suffix.result}"
-}
