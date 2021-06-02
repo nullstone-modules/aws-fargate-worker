@@ -54,3 +54,7 @@ output "service_security_group_id" {
   value       = aws_security_group.this.id
   description = "string ||| "
 }
+
+output "region" {
+  value = data.aws_region.this.name
+}
