@@ -3,11 +3,6 @@ output "cluster_arn" {
   description = "string ||| "
 }
 
-output "log_group_name" {
-  value       = aws_cloudwatch_log_group.this.name
-  description = "string ||| "
-}
-
 output "image_repo_name" {
   value       = try(aws_ecr_repository.this[0].name, "")
   description = "string ||| "
@@ -57,4 +52,20 @@ output "service_security_group_id" {
 
 output "region" {
   value = data.aws_region.this.name
+}
+
+output "log_provider" {
+  value       = "cloudwatch"
+  description = "string ||| "
+}
+
+output "log_group_name" {
+  value       = module.logs.name
+  description = "string ||| "
+}
+
+output "log_reader" {
+  value       = module.logs.reader
+  description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to read logs from Cloudwatch."
+  sensitive   = true
 }
